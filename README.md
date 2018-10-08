@@ -1,7 +1,5 @@
 # My webpack config
 
-Link to project: [card.slow.im](https://card.slow.im/)
-
 ### How to run project
 
 Must be installed npm. ( [How to](https://www.npmjs.com/get-npm) )
