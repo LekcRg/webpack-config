@@ -1,4 +1,4 @@
-# Page for payment by card
+# My webpack config
 
 Link to project: [card.slow.im](https://card.slow.im/)
 
