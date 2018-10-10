@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -9,10 +8,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-  entry: './src/scripts/index.js',
+  entry: {
+    index: ['./src/scripts/index/index.js', './src/styles/index/index.scss'],
+    second: [
+      './src/scripts/second/second.js',
+      './src/styles/second/second.scss'
+    ]
+  },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'scripts/[name].min.js',
+    library: 'name'
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -39,7 +45,10 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
           },
           {
             loader: 'css-loader',
@@ -99,26 +108,26 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'images/'
+              name: 'images/[name].[ext]'
+            }
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                { removeTitle: true },
+                { convertColors: { shorthex: false } },
+                { convertPathData: false }
+              ]
             }
           }
-          // {
-          //   loader: 'svgo-loader',
-          //   options: {
-          //     plugins: [
-          //       { removeTitle: true },
-          //       { convertColors: { shorthex: false } },
-          //       { convertPathData: false },
-          //     ],
-          //   },
-          // },
         ]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.min.css'
+      filename: 'styles/[name].min.css'
     }),
     new CleanWebpackPlugin('dist'),
     new webpack.ProvidePlugin({
@@ -132,7 +141,14 @@ module.exports = {
       quiet: false
     }),
     new HtmlWebpackPlugin({
+      filename: 'index.html',
+      chunks: ['index'],
       template: path.resolve(__dirname, 'src/views/index/index.pug')
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'second.html',
+      chunks: ['second'],
+      template: path.resolve(__dirname, 'src/views/second-page/second-page.pug')
     }),
     new WebpackBuildNotifierPlugin({
       title: 'Webeefy',

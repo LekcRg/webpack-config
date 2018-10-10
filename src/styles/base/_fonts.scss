@@ -1,9 +1,9 @@
-$RT: "Roboto-Thin";
-$RR: "Roboto-Regular";
-$RM: "Roboto-Medium";
-$RL: "Roboto-Light";
-$RB: "Roboto-Bold";
-$RBL: "Roboto-Black";
+$RT: 'Roboto-Thin';
+$RR: 'Roboto-Regular';
+$RM: 'Roboto-Medium';
+$RL: 'Roboto-Light';
+$RB: 'Roboto-Bold';
+$RBL: 'Roboto-Black';
 
 // @font-face {
 //   font-family: $RT;
@@ -11,8 +11,8 @@ $RBL: "Roboto-Black";
 // }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts/Roboto-Regular.ttf") format("ttf");
+  font-family: 'Roboto';
+  src: url('../../fonts/Roboto-Regular.ttf') format('ttf');
   font-weight: normal;
 }
 

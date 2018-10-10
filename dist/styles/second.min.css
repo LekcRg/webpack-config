@@ -1,0 +1,3 @@
+@font-face{font-family:Roboto;font-weight:400;src:url(../font/Roboto-Regular.ttf) format("ttf")}.header{height:75px;width:100%}@media screen and (max-width:phone){.header{height:30px}}.header__title{font-size:1.25rem;font-weight:300}body,html{font-family:Roboto,Arial,Helvetica,sans-serif;font-weight:400;height:100%;margin:0;padding:0;width:100%}*{-webkit-box-sizing:border-box;box-sizing:border-box}.test-svg{background-image:url(../images/test.svg);background-position:50%;background-repeat:no-repeat;background-size:contain;height:300px;width:300px}
+
+/*# sourceMappingURL=second.min.css.map*/
