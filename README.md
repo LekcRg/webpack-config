@@ -13,7 +13,7 @@ $ npm i
 - In development mode
 
 ```bash
-$ npm run dev
+$ npm run watch
 ```
 
 - In production mode
